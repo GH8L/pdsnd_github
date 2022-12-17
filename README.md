@@ -19,7 +19,15 @@ chicago.csv
 
 
 ### Credits
-
+I used the following sites:
+Github
 https://github.com/udacity/pdsnd_github
+
+CSV documntation
 https://docs.python.org/3/library/csv.html
+
+Python -W3school
 https://www.w3schools.com/python/
+
+
+As well youtube videos and udacity

@@ -23,7 +23,7 @@ def get_filters():
     # HINT: Use a while loop to handle invalid inputs
     #Using while loops
     while True:
-        city = input("Choose the city you would like to filter\n ...chicgo , new york city , washington\n")
+        city = input("Choose the city you would like to filter\n ...chicgo , new york city , washington\n").lower()
         if city not in ('chicago' , 'new york city' , 'washington'):
             print("Please choose only one of these three cities : chicago , new york city , washington")
             continue
@@ -33,7 +33,7 @@ def get_filters():
     # get user input for month (all, january, february, ... , june)
     while True:
         month=input("\nAny particular month you would like to filter from?....\
-    [january , february , march , april , may , june ,  or type in 'all' ] ....")
+    [january , february , march , april , may , june ,  or type in 'all' ] ....").lower()
         if month not in ('january', 'february','march','april','may','june' ,'all'):
             print("Please try again")
             continue
@@ -43,7 +43,7 @@ def get_filters():
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         day= input("\nIf you're lookinf for choosing a say \n ..please choose one of the week days \
-     [sunday , monday , tuesday , wedensday , thursday , friday, saturday] ..\n ")
+     [sunday , monday , tuesday , wedensday , thursday , friday, saturday] ..\n ").lower()
         if day not in ('sunday' ,'monday','tuesday' ,'wedensday','thursday','friday','saturday'):
             print("You might have a spelling errorr , please choose on the of the week days as mentioned :\
      [sunday , monday , tuesday , wedensday , thursday , friday, saturday] ..\n")
@@ -68,7 +68,7 @@ def load_data(city, month, day):
     """
     #load data files in csv file by using Pandas
     df = pd.read_csv(CITY_DATA[city])
-    
+
 
     #convert start time to to_datetime
     df['Start Time'] =pd.to_datetime(df['Start Time'])
@@ -83,8 +83,8 @@ def load_data(city, month, day):
     #MONTHS , using index
     #course
     if month !='all':
-        month =['january' ,'february','march','april','may' ,'june']
-        month = month.index(month)+1
+        months =['january' ,'february','march','april','may' ,'june']
+        month = months.index(month)+1
 
         df=df[df['month'] == month] #new data frame
 
@@ -106,11 +106,11 @@ def time_stats(df):
 
     # display the most common month
 
-    mc_month=df['month'].mode()[0]
-    print("Common Month used : " , mc_month)
+    mc_month= df['month'].mode()[0]
+    print("Common Month used : " ,mc_month)
 
     # display the most common day of week
-    mc_dweek =df['day_of_week'].mode()[0]
+    mc_dweek = df['day_of_week'].mode()[0]
     print("Most Common Day of week is :" , mc_dweek)
 
 
@@ -204,8 +204,8 @@ def user_stats(df):
 
 
     #Most recent year of birth
- 
-    
+
+
     try:
         rcnt_year = df['Birth Year'].max()
         print("\n Most Recent year of birth is : " , rcnt_year)
@@ -223,6 +223,24 @@ def user_stats(df):
     print('-'*40)
 
 
+
+
+    #Display raw data when requested
+def display_raw_data(df):
+    print(df.head())
+    next =0
+
+    while True:
+        view_raw_data=input("\n Would you like to see the next 5 rows of data? , Enter Yes or no \n").lower()
+        if view_raw_data != 'yes':
+            return
+        next = next + 5
+        print(df.iloc[next:next+5])
+
+
+
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -232,6 +250,15 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+
+        #requested daata when asked
+        while True:
+            view_raw_data =input("\n Would you like to see the next 5 rows of data? , Enter Yes or no \n").lower()
+            if view_raw_data != 'yes':
+                break
+            display_raw_data(df)
+            break
+
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':

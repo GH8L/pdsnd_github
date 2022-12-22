@@ -8,7 +8,8 @@ Bikershare
 
 
 ### Description
-Python bikershare project
+Python bikershare project.
+This project is created with python code.
 
 
 

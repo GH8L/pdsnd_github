@@ -1,1 +1,3 @@
 .github/**
+#bikeshare data files
+*.csv

@@ -10,13 +10,6 @@ Bikershare
 ### Description
 Python bikershare project
 
-### Files used
-city files in csv
-
-bikersare.py
-chicago.csv
-newyourkcity.csv
-chicago.csv
 
 
 ### Credits

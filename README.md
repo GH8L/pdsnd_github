@@ -15,10 +15,21 @@ This project is created with python code.
 
 
 ### Credits
-
+I used the following sites:
+Github
 https://github.com/udacity/pdsnd_github
+
+CSV documntation
 https://docs.python.org/3/library/csv.html
+
+Python -W3school
 https://www.w3schools.com/python/
+<<<<<<< HEAD
 https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
 
 edited new 
+=======
+
+
+As well youtube videos and udacity
+>>>>>>> origin/documntation
